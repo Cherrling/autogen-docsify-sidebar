@@ -89,71 +89,71 @@ let dirTree = [];
 dirTree = processDir(basepath, dirTree);
 let fileTree = '';
 
-// function consoleTree(tree, floor = 1, str = "* ", adder = "   ") {
-//   const list = new Array();
-//   list.splice(0,list.length)
-//   for (let i = 0; i < tree.length; i++) {
-
-
-//     var filename=tree[i].name.split("/").slice(-1)
-//     var t=filename[0].split("-")
-
-//     list[t[0]]=tree[i]
-//     list[t[0]].fname=t[1].replace(".md","")
-
-
-
-          
-//     for (let a = 0; a < list.length; a++) {
-//       fileTree += str+ "[" +list[a].fname+"]" + "("+"./"+list[a].name+")"+"\n";
-
-
-      
-//     }
-
-    
-//     if (tree[i].children)
-//     consoleTree(
-//       tree[i].children,
-//       floor + 1,
-//       adder+str,
-//       adder
-//       );
-
-
-
-
-//     }
-
-    
-
-
-// }
-
-
-
-
-
 function consoleTree(tree, floor = 1, str = "* ", adder = "   ") {
+  const list = new Array();
+  list.splice(0,list.length)
+  list.length=0
   for (let i = 0; i < tree.length; i++) {
+
+
     var filename=tree[i].name.split("/").slice(-1)
     var t=filename[0].split("-")
 
-    // list[t[0]]=tree[i]
-    // list[t[0]].fname=t[1].replace(".md","")
-
-    fileTree += str+ "[" +t[1].replace(".md","")+"]" + "("+"./"+tree[i].name+")"+"\n";
+    list[t[0]]=tree[i]
+    list[t[0]].fname=t[1].replace(".md","")
 
 
-    if (tree[i].children)
-      consoleTree(
-        tree[i].children,
-        floor + 1,
-        adder+str,
-        adder
-      );
+          
+
+
+    
+
+
+
+
+
+    }
+
+  for (let a = 0; a < list.length; a++) {
+    fileTree += str+ "[" +list[a].fname+"]" + "("+"./"+list[a].name+")"+"\n";
+    // if (tree[i].children)
+    // consoleTree(
+    //   tree[i].children,
+    //   floor + 1,
+    //   adder+str,
+    //   adder
+    //   );
+
+      
   }
+
+
 }
+
+
+
+
+
+// function consoleTree(tree, floor = 1, str = "* ", adder = "   ") {
+//   for (let i = 0; i < tree.length; i++) {
+//     var filename=tree[i].name.split("/").slice(-1)
+//     var t=filename[0].split("-")
+
+//     // list[t[0]]=tree[i]
+//     // list[t[0]].fname=t[1].replace(".md","")
+
+//     fileTree += str+ "[" +t[1].replace(".md","")+"]" + "("+"./"+tree[i].name+")"+"\n";
+
+
+//     if (tree[i].children)
+//       consoleTree(
+//         tree[i].children,
+//         floor + 1,
+//         adder+str,
+//         adder
+//       );
+//   }
+// }
 
 
 
