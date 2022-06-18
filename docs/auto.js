@@ -89,7 +89,7 @@ let dirTree = [];
 dirTree = processDir(basepath, dirTree);
 let fileTree = '';
 
-function consoleTree(tree, floor = 1, str = "* ", adder = "   ") {
+function consoleTree(tree,str = "* ", adder = "   ") {
   const list = new Array();
   list.splice(0,list.length)
   list.length=0
@@ -102,27 +102,16 @@ function consoleTree(tree, floor = 1, str = "* ", adder = "   ") {
     list[t[0]]=tree[i]
     list[t[0]].fname=t[1].replace(".md","")
 
-
-          
-
-
-    
-
-
-
-
-
     }
 
   for (let a = 0; a < list.length; a++) {
     fileTree += str+ "[" +list[a].fname+"]" + "("+"./"+list[a].name+")"+"\n";
-    // if (tree[i].children)
-    // consoleTree(
-    //   tree[i].children,
-    //   floor + 1,
-    //   adder+str,
-    //   adder
-    //   );
+    if (list[a].children)
+    consoleTree(
+      list[a].children,
+      adder+str,
+      adder
+      );
 
       
   }
