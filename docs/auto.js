@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 let basepath = "./"; //解析目录路径
-let filterFile = ["CNAME", "auto.js","README.md","_sidebar.md","index.html",".nojekyll","autosidebar.js"]; //过滤文件名，使用，隔开
+let filterFile = ["CNAME", "auto.js","README.md","_sidebar.md","index.html",".nojekyll","autosidebar.js","_sidebar.md.bak"]; //过滤文件名，使用，隔开
 let stopFloor = 10; //遍历层数
 let generatePath = "./_sidebar.md"; //生成文件路径
 let isFullPath = true; //是否输出完整路径
@@ -105,6 +105,9 @@ function consoleTree(tree,str = "* ", adder = "   ") {
     }
 
   for (let a = 0; a < list.length; a++) {
+    if (list[a].fname=="ignore") {
+      continue
+    }
     fileTree += str+ "[" +list[a].fname+"]" + "("+"./"+list[a].name+")"+"\n";
     if (list[a].children)
     consoleTree(
